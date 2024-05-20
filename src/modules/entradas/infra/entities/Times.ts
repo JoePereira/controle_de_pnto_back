@@ -1,11 +1,18 @@
 class Times {
   id: string;
-  codigoUsuario: string;
+  usuarioId: string;
   horarioEntrada: Date;
-  constructor(id: string, codigoUsuario: string, horarioEntrada: Date) {
+  horarioSaida: Date;
+  constructor(
+    id: string,
+    usuarioId: string,
+    horarioEntrada: Date,
+    horarioSaida: Date
+  ) {
     this.id = id;
-    this.codigoUsuario = codigoUsuario;
+    this.usuarioId = usuarioId;
     this.horarioEntrada = horarioEntrada;
+    this.horarioSaida = horarioSaida;
   }
 }
 
