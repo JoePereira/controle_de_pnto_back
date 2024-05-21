@@ -6,7 +6,7 @@
     "node": "18"
   },
   "scripts": {
-    "postinstall": "npx prisma:generate",
+    "postinstall": "npm run prisma:generate",
     "build": "babel src --out-dir dist --extensions \".ts\"",
     "start": "node dist/shared/infra/http/server.js",
     "start:dev": "nodemon --watch  \"src\" --exec \"ts-node -r tsconfig-paths/register src/shared/infra/http/server.ts\" -e ts",
