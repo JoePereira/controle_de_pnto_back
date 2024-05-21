@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  backend:
+    build: .
+    container_name: controle_de_ponto_backend
+    image: controle_de_ponto_backend
+    ports:
+      - 3300:3300
+    volumes:
+      - .:/usr/app
+    links: 
+      - db
+    depends_on:
+      - db
+
+  db:
+    
+    container_name: db_controle_de_ponto
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: controle_de_ponto
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  pgdata: 
+    driver: local

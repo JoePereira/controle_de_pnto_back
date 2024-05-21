@@ -6,11 +6,14 @@
     "node": "18"
   },
   "scripts": {
-    "build": "tsc && tsc-alias",
+    "postinstall": "npx prisma:generate",
+    "build": "babel src --out-dir dist --extensions \".ts\"",
     "start": "node dist/shared/infra/http/server.js",
     "start:dev": "nodemon --watch  \"src\" --exec \"ts-node -r tsconfig-paths/register src/shared/infra/http/server.ts\" -e ts",
     "test": "jest --detectOpenHandles",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "prisma:migrate": "npx prisma migrate dev --schema=./src/shared/infra/prisma/schema.prisma",
+    "prisma:generate": "npx prisma generate --schema=./src/shared/infra/prisma/schema.prisma"
   },
   "license": "MIT",
   "dependencies": {
@@ -23,6 +26,11 @@
     "reflect-metadata": "^0.2.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.24.5",
+    "@babel/core": "^7.24.5",
+    "@babel/plugin-proposal-decorators": "^7.24.1",
+    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-typescript": "^7.24.1",
     "@eslint/js": "^9.2.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.17",
@@ -30,9 +38,8 @@
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.12",
     "@types/nodemon": "^1.19.6",
-    "prisma": "^5.7.1",
-    "tsyringe": "^4.8.0",
     "@types/supertest": "^6.0.2",
+    "babel-plugin-transform-typescript-metadata": "^0.3.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^8.10.0",
     "globals": "^15.2.0",
@@ -40,11 +47,13 @@
     "lint-staged": "^15.2.2",
     "nodemon": "^3.1.0",
     "prettier": "^2.7.1",
+    "prisma": "^5.7.1",
     "supertest": "^7.0.0",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.10",
     "tsconfig-paths": "^4.2.0",
+    "tsyringe": "^4.8.0",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.9.0"
   }
