@@ -2,6 +2,32 @@
 
 <p>Este projeto é um sistema de controle de ponto desenvolvido em Node.js e TypeScript, utilizando o banco de dados PostgreSQL com Prisma como ORM. A aplicação segue os princípios SOLID para uma arquitetura limpa e extensível, e utiliza Jest para testes automatizados.</p>
 
+<h2>🚀 Rode a aplicacao (use o postman por exemplo): </h2>
+https://controle-de-ponto-back.onrender.com
+
+<h2>🚀 Rotas da api: </h2>
+<h3>User: </h3>
+<ul>
+ <li>
+  Criar usuario: /user/createUser -body-> JSON: {"nome": "Joederson"}
+ </li>
+ <li>
+  Buscar usuario pelo seu código: /user/getUserByCodigoUsuario/"Cole o Codigo de usuario obtido na resposta de createUser" 
+ </li>
+ <li>
+  Registrar horario de entrada: /times/createEntry -body-> {"usuarioId": "cole o id do usuario obtido na rota getByCod"}
+ </li>
+ <li>
+  Listar horarios de entrada: /times/getAllEntryTimesByUsuarioId/cole o id do usuario obtido na rota getByCod&5&0 (junto ao id mantenha o &5&0)
+ </li>
+ <li>
+  Registrar horario de saida: /times/createExit -body-> {"usuarioId": "cole o id do usuario obtido na rota getByCod"}
+ </li>
+ <li>
+  Listar horarios de saida: /times/getAllExitTimesByUsuarioId/cole o id do usuario obtido na rota getByCod&5&0 (junto ao id mantenha o &5&0)
+ </li>
+</ul>
+
 <h2>🚀 Tecnologias: </h2>
 
  <div style="display: inline_block"><br>
